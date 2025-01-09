@@ -91,3 +91,23 @@
 	left: 44%;
 	transform: translate(-50%, -50%);
 }
+
+@media only screen and (min-width: 300px) {
+	/* For tablets: */
+	.slick-home .slick-dots {
+		bottom: 34%;
+	}
+}
+@media only screen and (min-width: 1024px) {
+	/* For tablets: */
+	.slick-home .slick-dots {
+		bottom: 32%;
+	}
+}
+
+@media only screen and (min-width: 1600px) {
+	/* For tablets: */
+	.slick-home .slick-dots {
+		bottom: 36%;
+	}
+}

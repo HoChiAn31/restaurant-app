@@ -6,6 +6,9 @@ export default {
 			colors: {
 				primary: '#c75d15',
 			},
+			fontFamily: {
+				valky: ['"MTD Valky Bold"', 'sans-serif'],
+			},
 		},
 	},
 	plugins: [],
