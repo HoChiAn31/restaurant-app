@@ -145,3 +145,13 @@ export const MenuMobile = () => (
 		</defs>
 	</svg>
 );
+export const Clock = () => (
+	<svg width='20' height='21' viewBox='0 0 20 21' fill='none' xmlns='http://www.w3.org/2000/svg'>
+		<path
+			d='M10 6.02767V10.1943L12.0833 11.4443M17.5 10.1943C17.5 14.3365 14.1421 17.6943 10 17.6943C5.85786 17.6943 2.5 14.3365 2.5 10.1943C2.5 6.0522 5.85786 2.69434 10 2.69434C14.1421 2.69434 17.5 6.0522 17.5 10.1943Z'
+			stroke='#666666'
+			stroke-linecap='round'
+			stroke-linejoin='round'
+		/>
+	</svg>
+);

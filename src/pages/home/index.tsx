@@ -2,8 +2,13 @@ import Slider from 'react-slick';
 import { settingHomes } from '../../constants/sliderSetting';
 import { Button } from 'antd';
 import { dataImage } from '../../mocks/dataMenu';
+import { useNavigate } from 'react-router-dom';
 
 const HomePage = () => {
+	const nav = useNavigate();
+	const handleSwitchMenu = () => {
+		nav('/menu');
+	};
 	return (
 		<div>
 			<Slider {...settingHomes} className='slick-home'>
@@ -58,10 +63,14 @@ const HomePage = () => {
 									</div>
 
 									<div className='absolute bottom-40 flex w-full items-center justify-center lg:hidden'>
-										<Button className='w-full py-5 text-primary'>Tìm hiểu thêm</Button>
+										<Button className='w-full py-5 text-primary' onClick={handleSwitchMenu}>
+											Tìm hiểu thêm
+										</Button>
 									</div>
 									<div className='hidden w-full items-center justify-center lg:flex'>
-										<Button className='px-20 py-5 text-primary'>Tìm hiểu thêm</Button>
+										<Button className='px-20 py-5 text-primary' onClick={handleSwitchMenu}>
+											Tìm hiểu thêm
+										</Button>
 									</div>
 								</div>
 							</>

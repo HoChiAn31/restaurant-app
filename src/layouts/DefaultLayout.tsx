@@ -18,7 +18,7 @@ const DefaultLayout: FC<DefaultLayoutProps> = ({ children }) => {
 	return (
 		<div className={`${name === '/menu' ? '-z-20 bg-[#e6e6e6]' : ''} flex min-h-screen flex-col`}>
 			<Header />
-			<main className='flex-grow pt-[120px]'>{children}</main>
+			<main className={`flex-grow ${name === '/menu' ? 'pt-[120px]' : ''}`}>{children}</main>
 			<Footer />
 		</div>
 	);

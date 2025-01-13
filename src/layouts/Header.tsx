@@ -11,12 +11,18 @@ const Header = () => {
 
 	const [isMobile, setIsMobile] = useState(window.innerWidth < 768); // Initial check for mobile view
 	const [isToggleMenu, setIsToggleMenu] = useState(false);
+	const [isScrolled, setIsScrolled] = useState(false); // Track scrolling
+
 	// Xác định key đang active dựa vào pathname
 	const selectedKeys = (() => {
 		if (name.includes('/menu')) return ['menu'];
-		if (name.includes('/phong-hoi-nghi')) return ['Phòng hội nghị'];
-		if (name.includes('/khuyen-mai-tiec-cuoi')) return ['Khuyến mãi tiệc cưới'];
-		if (name.includes('/sanhtiec')) return ['SubMenu'];
+		if (name.includes('/conference-room')) return ['conference-room'];
+		if (name.includes('/promotion-wedding')) return ['promotion-wedding'];
+		if (name.includes('/banquetHall')) return ['SubMenu'];
+		if (name.includes('/banquetHall/dragon-boat')) return ['SubMenu', 'dragon-boat'];
+		if (name.includes('/banquetHall/ngansen-hall')) return ['SubMenu', 'ngansen-hall'];
+		if (name.includes('/banquetHall/kimsen-hall')) return ['SubMenu', 'kimsen-hall'];
+		if (name.includes('/banquetHall/thanhsen-hall')) return ['SubMenu', 'thanhsen-hall'];
 		return [];
 	})();
 
@@ -26,16 +32,24 @@ const Header = () => {
 			setIsMobile(window.innerWidth < 768);
 		};
 
-		window.addEventListener('resize', handleResize);
+		const handleScroll = () => {
+			setIsScrolled(window.scrollY > 300); // Change header background color on scroll for both mobile and desktop
+		};
 
-		// Cleanup the event listener on unmount
+		window.addEventListener('resize', handleResize);
+		window.addEventListener('scroll', handleScroll);
+
+		// Cleanup the event listeners on unmount
 		return () => {
 			window.removeEventListener('resize', handleResize);
+			window.removeEventListener('scroll', handleScroll);
 		};
 	}, []);
 
 	return (
-		<div className='fixed left-0 right-0 top-0 z-[99999] bg-white shadow-[rgba(0,_0,_0,_0.25)_0px_25px_50px_-12px] lg:bg-transparent lg:shadow-none'>
+		<div
+			className={`fixed left-0 right-0 top-0 z-[99999] ${isScrolled ? 'lg:bg-white lg:shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)]' : ''} shadow-[rgba(0,_0,_0,_0.25)_0px_25px_50px_-12px] lg:bg-transparent lg:shadow-none`}
+		>
 			<div className='relative mx-auto flex w-full max-w-[1400px] items-center justify-between px-4 py-2 2xl:max-w-[1680px]'>
 				{/* Mobile Layout */}
 				{isMobile && (
@@ -61,12 +75,17 @@ const Header = () => {
 						<img
 							src='https://i0.wp.com/thuytadamsen.vn/wp-content/uploads/2019/05/logo-thuy-ta-dam-sen-100.png?fit=100%2C97'
 							alt='Logo'
+							className='lg:w-20'
 						/>
 						<div className='flex flex-col'>
-							<span className="font-['MTD Valky Bold'] text-xl font-semibold leading-[28.80px] text-[#434146] 2xl:text-2xl">
+							<span
+								className={`${isScrolled ? '!text-[#434146]' : 'text-white'} ${name === '/menu' ? 'text-[#434146]' : 'text-white'} font-['MTD Valky Bold'] text-xl font-semibold leading-[28.80px] 2xl:text-2xl`}
+							>
 								Nhà hàng
 							</span>
-							<span className="font-['MTD Valky Bold'] text-3xl font-semibold uppercase text-[#434146] 2xl:text-4xl">
+							<span
+								className={`${isScrolled ? '!text-[#434146]' : 'text-white'} ${name === '/menu' ? 'text-[#434146]' : 'text-white'} font-['MTD Valky Bold'] text-3xl font-semibold uppercase text-[#434146] 2xl:text-4xl`}
+							>
 								Thủy Tạ Đầm Sen
 							</span>
 						</div>
@@ -100,11 +119,11 @@ const Header = () => {
 								<Menu.Item key='menu'>
 									<Link to={'/menu'}>Thực đơn</Link>
 								</Menu.Item>
-								<Menu.Item key='Phòng hội nghị'>
-									<Link to={'/phong-hoi-nghi'}>Phòng hội nghị</Link>
+								<Menu.Item key='conference-room'>
+									<Link to={'/conference-room'}>Phòng hội nghị</Link>
 								</Menu.Item>
-								<Menu.Item key='Khuyến mãi tiệc cưới'>
-									<Link to={'/khuyen-mai-tiec-cuoi'}>Khuyến mãi tiệc cưới</Link>
+								<Menu.Item key='promotion-wedding'>
+									<Link to={'/promotion-wedding'}>Khuyến mãi tiệc cưới</Link>
 								</Menu.Item>
 								<Menu.SubMenu
 									key='SubMenu'
@@ -114,8 +133,8 @@ const Header = () => {
 										</div>
 									}
 								>
-									<Menu.Item key='Thuyền rồng Kim Long - Hoàng Long'>
-										Thuyền rồng Kim Long - Hoàng Long
+									<Menu.Item key='dragonBoat'>
+										<Link to={'/dragonBoat'}>Thuyền rồng Kim Long - Hoàng Long</Link>
 									</Menu.Item>
 									<Menu.Item key='Sảnh Ngân Sen'>Sảnh Ngân Sen</Menu.Item>
 									<Menu.Item key='Sảnh Hoàng Sen - Kim Sen'>Sảnh Hoàng Sen - Kim Sen</Menu.Item>
@@ -137,13 +156,17 @@ const Header = () => {
 								},
 								components: {
 									Menu: {
+										itemColor: isScrolled ? '#434146' : name === '/menu' ? '#434146' : '#878787',
 										itemSelectedColor: '#c75d15',
 										itemHoverColor: '#c75d15',
+										activeBarHeight: 0,
+										itemBg: '#c75d15',
 									},
 								},
 							}}
 						>
 							<Menu
+								theme={name !== '/menu' || isScrolled ? 'light' : 'light'}
 								mode='horizontal'
 								selectedKeys={selectedKeys}
 								className='border-transparent bg-transparent'
@@ -160,18 +183,24 @@ const Header = () => {
 										</div>
 									}
 								>
-									<Menu.Item key='Thuyền rồng Kim Long - Hoàng Long'>
-										Thuyền rồng Kim Long - Hoàng Long
+									<Menu.Item key='dragon-boat'>
+										<Link to={'/banquetHall/dragon-boat'}>Thuyền rồng Kim Long - Hoàng Long</Link>
 									</Menu.Item>
-									<Menu.Item key='Sảnh Ngân Sen'>Sảnh Ngân Sen</Menu.Item>
-									<Menu.Item key='Sảnh Hoàng Sen - Kim Sen'>Sảnh Hoàng Sen - Kim Sen</Menu.Item>
-									<Menu.Item key='Sảnh Thanh Sen'>Sảnh Thanh Sen</Menu.Item>
+									<Menu.Item key='ngansen-hall'>
+										<Link to={'/banquetHall/ngansen-hall'}>Sảnh Ngân Sen</Link>
+									</Menu.Item>
+									<Menu.Item key='kimsen-hall'>
+										<Link to={'/banquetHall/kimsen-hall'}>Sảnh Hoàng Sen - Kim Sen</Link>
+									</Menu.Item>
+									<Menu.Item key='thanhsen-hall'>
+										<Link to={'/banquetHall/thanhsen-hall'}>Sảnh Thanh Sen</Link>
+									</Menu.Item>
 								</Menu.SubMenu>
-								<Menu.Item key='Phòng hội nghị'>
-									<Link to={'/phong-hoi-nghi'}>Phòng hội nghị</Link>
+								<Menu.Item key='conference-room'>
+									<Link to={'/conference-room'}>Phòng hội nghị</Link>
 								</Menu.Item>
-								<Menu.Item key='Khuyến mãi tiệc cưới'>
-									<Link to={'/khuyen-mai-tiec-cuoi'}>Khuyến mãi tiệc cưới</Link>
+								<Menu.Item key='promotion-wedding'>
+									<Link to={'/promotion-wedding'}>Khuyến mãi tiệc cưới</Link>
 								</Menu.Item>
 							</Menu>
 						</ConfigProvider>
