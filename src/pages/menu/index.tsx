@@ -21,21 +21,19 @@ const MenuPage = () => {
 	useEffect(() => {
 		const handleClickOutside = (event: MouseEvent) => {
 			if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
-				setIsMenuOpen(false);
+				setIsMenuOpen(false); // Ẩn menu
 			}
 		};
 
-		if (isMenuOpen) {
-			document.addEventListener('mousedown', handleClickOutside);
-		} else {
+		document.addEventListener('mousedown', handleClickOutside);
+		return () => {
 			document.removeEventListener('mousedown', handleClickOutside);
-		}
+		};
+	}, []);
 
-		return () => document.removeEventListener('mousedown', handleClickOutside);
-	}, [isMenuOpen]);
 	return (
 		<div className='relative px-5 pb-40 md:px-20'>
-			<div className='absolute -left-[10%] -top-[106%] z-10 h-[900px] w-[900px] transform rounded-full bg-transparent opacity-15 outline outline-[120px] outline-[#ed7d31]'></div>
+			<div className='absolute -left-6 -top-64 z-10 h-[400px] w-[400px] transform rounded-full bg-transparent opacity-15 outline outline-[60px] outline-[#ed7d31] lg:-left-[10%] lg:-top-[106%] lg:h-[900px] lg:w-[900px] lg:outline-[120px]'></div>
 
 			{/* Nút mở menu (chỉ hiển thị trên mobile) */}
 			<button
@@ -48,17 +46,12 @@ const MenuPage = () => {
 
 			{/* Hiển thị MenuLayout khi isMenuOpen là true */}
 			{isMenuOpen && (
-				<div
-					className='fixed inset-0 z-30 flex items-center justify-center bg-black bg-opacity-50 md:hidden'
-					ref={menuRef}
-				>
-					<div className='relative w-full max-w-sm rounded-lg p-5 shadow-lg'>
-						<button
-							className='absolute -right-10 top-6 text-5xl text-[#ed7d31]'
-							onClick={toggleMenu}
-						>
+				<div className='fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 md:hidden'>
+					<div ref={menuRef} className='relative w-full max-w-sm rounded-lg p-5 shadow-lg'>
+						<button className='absolute right-10 text-5xl text-[#ed7d31]' onClick={toggleMenu}>
 							×
 						</button>
+
 						<MenuLayout />
 					</div>
 				</div>
@@ -124,10 +117,10 @@ const MenuPage = () => {
 														<img
 															src={item.imageUrl}
 															alt={item.titleLast}
-															className='h-20 w-20 md:h-28 md:w-28'
+															className='h-16 w-16 md:h-28 md:w-28'
 														/>
 													</div>
-													<p className='h-20 w-32 pt-2 text-center text-lg text-[#3f3f41] md:text-xl'>
+													<p className='pt-2 text-center text-xs text-[#3f3f41] md:text-xl lg:h-20 lg:w-32 lg:text-lg'>
 														{item.titleFirst} <span>{item.titleLast}</span>
 													</p>
 												</div>

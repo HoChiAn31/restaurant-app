@@ -25,8 +25,8 @@ const KimSenHallPage = () => {
 					</div>
 				</div>
 			</div>
-			<div className='mx-auto w-full px-5 lg:max-w-[865px] lg:px-0'>
-				<div className='flex w-full items-center justify-center py-10'>
+			<div className='mx-auto w-full space-y-6 px-5 pt-12 lg:max-w-[865px] lg:px-0'>
+				<div className='flex w-full items-center justify-center'>
 					<img
 						src='https://i0.wp.com/thuytadamsen.vn/wp-content/uploads/2019/03/sanh-kim-sen.jpg?w=960'
 						alt='retaurant'
@@ -50,7 +50,7 @@ const KimSenHallPage = () => {
 					/>
 				</div>
 
-				<div className='inline-flex flex-col items-start justify-start gap-5 pt-4'>
+				<div className='inline-flex flex-col items-start justify-start gap-5'>
 					<div className="self-stretch font-['Manrope'] text-base font-normal leading-normal text-[#3f3f41]">
 						Sảnh nằm ngay lối vào của cổng số 2 Đầm Sen, có thiết kế Châu Âu sang trọng đẳng cấp.
 						Khi gộp cả Hoàng Sen và Kim Sen để thành Hoàng Kim sen, có thể đáp ứng lượng khách trên
@@ -73,7 +73,7 @@ const KimSenHallPage = () => {
 					</div>
 				</div>
 
-				<div className='flex flex-col gap-4 pt-2 lg:flex-row'>
+				<div className='flex flex-col gap-4 lg:flex-row'>
 					<img
 						src='https://i1.wp.com/wp.thuytadamsen.vn/wp-content/uploads/2019/03/DSC00700.jpg?strip=info&w=748'
 						alt=''
@@ -92,7 +92,7 @@ const KimSenHallPage = () => {
 						/>
 					</div>
 				</div>
-				<div className='pt-2'>
+				<div className=''>
 					<img
 						src='https://i0.wp.com/wp.thuytadamsen.vn/wp-content/uploads/2019/03/DSC00782.jpg?strip=info&w=748'
 						alt=''
@@ -102,7 +102,7 @@ const KimSenHallPage = () => {
 						Sảnh Hoàng Sen
 					</div>
 				</div>
-				<div className='flex flex-col gap-4 pt-2 lg:flex-row'>
+				<div className='flex flex-col gap-4 lg:flex-row'>
 					<img
 						src='https://i1.wp.com/wp.thuytadamsen.vn/wp-content/uploads/2019/03/DSC00706.jpg?strip=info&w=748'
 						alt=''
@@ -121,7 +121,7 @@ const KimSenHallPage = () => {
 						/>
 					</div>
 				</div>
-				<div className='pt-2'>
+				<div className=''>
 					<img
 						src='https://i2.wp.com/wp.thuytadamsen.vn/wp-content/uploads/2019/03/DSC00722.jpg?strip=info&w=748'
 						alt=''

@@ -83,7 +83,7 @@ const MenuLayout = () => {
 	};
 
 	return (
-		<div className='w-[421px] rounded-3xl bg-[#fff9eb] px-2 py-5 2xl:h-[700px]'>
+		<div className='rounded-3xl bg-[#fff9eb] px-2 py-5 lg:w-[421px] 2xl:h-[700px]'>
 			<div className='mb-5 flex w-full items-center justify-center'>
 				<LogoMenu />
 			</div>

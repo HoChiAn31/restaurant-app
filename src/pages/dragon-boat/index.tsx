@@ -29,8 +29,8 @@ const DragonBoatPage = () => {
 					</div>
 				</div>
 			</div>
-			<div className='mx-auto w-full px-3 lg:max-w-[865px] lg:px-0'>
-				<div className='flex w-full items-center justify-center py-10'>
+			<div className='mx-auto w-full space-y-6 px-3 pt-12 lg:max-w-[865px] lg:px-0'>
+				<div className='flex w-full items-center justify-center'>
 					<img
 						src='https://i0.wp.com/thuytadamsen.vn/wp-content/uploads/2019/03/sanh-kim-long-hoang-long.jpg?w=960'
 						alt='retaurant'
@@ -60,7 +60,7 @@ const DragonBoatPage = () => {
 						vào những dịp lễ lớn.
 					</div>
 				</div>
-				<div className='flex flex-col gap-4 pt-2 lg:flex-row'>
+				<div className='flex flex-col gap-4 lg:flex-row'>
 					<img
 						src='https://i0.wp.com/wp.thuytadamsen.vn/wp-content/uploads/2019/03/DSC00745.jpg?strip=info&w=748'
 						alt=''
@@ -80,7 +80,7 @@ const DragonBoatPage = () => {
 					</div>
 				</div>
 				{/* desktop */}
-				<div className='hidden gap-4 pt-2 lg:flex'>
+				<div className='hidden gap-4 lg:flex'>
 					<div className='flex w-1/2 flex-col gap-4'>
 						<img
 							src='https://i1.wp.com/wp.thuytadamsen.vn/wp-content/uploads/2019/03/DSC00767.jpg?strip=info&w=748'
@@ -100,7 +100,7 @@ const DragonBoatPage = () => {
 					/>
 				</div>
 				{/* mobile */}
-				<div className='space-y-2 pt-2 lg:hidden'>
+				<div className='space-y-4 lg:hidden'>
 					<img
 						src='https://i1.wp.com/wp.thuytadamsen.vn/wp-content/uploads/2019/03/nha-hang-thuy-ta-dam-sen-1.jpg?strip=info&w=500'
 						alt=''
