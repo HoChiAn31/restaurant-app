@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { ConfigProvider, Input, Menu } from 'antd';
 import { SearchOutlined, MenuOutlined } from '@ant-design/icons';
 import { ArrowDown } from '../components/icon';
@@ -12,17 +12,26 @@ const Header = () => {
 	const [isMobile, setIsMobile] = useState(window.innerWidth < 768); // Initial check for mobile view
 	const [isToggleMenu, setIsToggleMenu] = useState(false);
 	const [isScrolled, setIsScrolled] = useState(false); // Track scrolling
+	const menuRef = useRef<HTMLDivElement | null>(null);
 
+	const [activeSubMenu, setActiveSubMenu] = useState(null);
+
+	const handleSubMenuClick = (key: any) => {
+		setActiveSubMenu(key);
+	};
 	// Xác định key đang active dựa vào pathname
 	const selectedKeys = (() => {
 		if (name.includes('/menu')) return ['menu'];
 		if (name.includes('/conference-room')) return ['conference-room'];
 		if (name.includes('/promotion-wedding')) return ['promotion-wedding'];
-		if (name.includes('/banquetHall')) return ['SubMenu'];
-		if (name.includes('/banquetHall/dragon-boat')) return ['SubMenu', 'dragon-boat'];
-		if (name.includes('/banquetHall/ngansen-hall')) return ['SubMenu', 'ngansen-hall'];
-		if (name.includes('/banquetHall/kimsen-hall')) return ['SubMenu', 'kimsen-hall'];
-		if (name.includes('/banquetHall/thanhsen-hall')) return ['SubMenu', 'thanhsen-hall'];
+		if (name.includes('/banquetHall')) {
+			// Active the SubMenu and its child based on the pathname
+			if (name.includes('/dragon-boat')) return ['SubMenu', 'dragon-boat'];
+			if (name.includes('/ngansen-hall')) return ['SubMenu', 'ngansen-hall'];
+			if (name.includes('/kimsen-hall')) return ['SubMenu', 'kimsen-hall'];
+			if (name.includes('/thanhsen-hall')) return ['SubMenu', 'thanhsen-hall'];
+			return ['SubMenu']; // Default to SubMenu if it's a banquetHall page but no specific hall
+		}
 		return [];
 	})();
 
@@ -45,12 +54,28 @@ const Header = () => {
 			window.removeEventListener('scroll', handleScroll);
 		};
 	}, []);
+	useEffect(() => {
+		const handleClickOutside = (event: MouseEvent) => {
+			if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
+				setIsToggleMenu(false);
+			}
+		};
 
+		if (isToggleMenu) {
+			document.addEventListener('mousedown', handleClickOutside);
+		} else {
+			document.removeEventListener('mousedown', handleClickOutside);
+		}
+
+		return () => {
+			document.removeEventListener('mousedown', handleClickOutside);
+		};
+	}, [isToggleMenu]);
 	return (
 		<div
-			className={`fixed left-0 right-0 top-0 z-[99999] ${isScrolled ? 'lg:bg-white lg:shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)]' : ''} shadow-[rgba(0,_0,_0,_0.25)_0px_25px_50px_-12px] lg:bg-transparent lg:shadow-none`}
+			className={`fixed left-0 right-0 top-0 z-[99999] ${isScrolled ? 'lg:bg-white lg:shadow-[0_3px_10px_rgb(0,0,0,0.2)]' : ''} shadow-[rgba(0,_0,_0,_0.25)_0px_25px_50px_-12px] lg:bg-transparent lg:shadow-none`}
 		>
-			<div className='relative mx-auto flex w-full max-w-[1400px] items-center justify-between px-4 py-2 2xl:max-w-[1680px]'>
+			<div className='relative mx-auto flex w-full max-w-[1400px] items-center justify-between bg-white px-4 py-2 md:bg-transparent 2xl:max-w-[1680px]'>
 				{/* Mobile Layout */}
 				{isMobile && (
 					<div className='flex w-full items-center md:hidden'>
@@ -64,6 +89,7 @@ const Header = () => {
 							<img
 								src='https://i0.wp.com/thuytadamsen.vn/wp-content/uploads/2019/05/logo-thuy-ta-dam-sen-100.png?fit=100%2C97'
 								alt='Logo'
+								className='w-14'
 							/>
 						</div>
 					</div>
@@ -95,6 +121,7 @@ const Header = () => {
 				{/* Menu Mobile */}
 				{isMobile && (
 					<div
+						ref={menuRef}
 						className={`${isToggleMenu ? 'block' : 'hidden'} absolute inset-x-0 top-full block w-full bg-white shadow-md md:hidden`}
 					>
 						<ConfigProvider
@@ -133,12 +160,18 @@ const Header = () => {
 										</div>
 									}
 								>
-									<Menu.Item key='dragonBoat'>
-										<Link to={'/dragonBoat'}>Thuyền rồng Kim Long - Hoàng Long</Link>
+									<Menu.Item key='dragon-boat'>
+										<Link to={'/banquetHall/dragon-boat'}>Thuyền rồng Kim Long - Hoàng Long</Link>
 									</Menu.Item>
-									<Menu.Item key='Sảnh Ngân Sen'>Sảnh Ngân Sen</Menu.Item>
-									<Menu.Item key='Sảnh Hoàng Sen - Kim Sen'>Sảnh Hoàng Sen - Kim Sen</Menu.Item>
-									<Menu.Item key='Sảnh Thanh Sen'>Sảnh Thanh Sen</Menu.Item>
+									<Menu.Item key='ngansen-hall'>
+										<Link to={'/banquetHall/ngansen-hall'}>Sảnh Ngân Sen</Link>
+									</Menu.Item>
+									<Menu.Item key='kimsen-hall'>
+										<Link to={'/banquetHall/kimsen-hall'}>Sảnh Hoàng Sen - Kim Sen</Link>
+									</Menu.Item>
+									<Menu.Item key='thanhsen-hall'>
+										<Link to={'/banquetHall/thanhsen-hall'}>Sảnh Thanh Sen</Link>
+									</Menu.Item>
 								</Menu.SubMenu>
 							</Menu>
 						</ConfigProvider>
@@ -147,7 +180,7 @@ const Header = () => {
 
 				{/* Menu Desktop */}
 				{!isMobile && (
-					<div className='z-50 hidden md:flex'>
+					<div className='hidden md:flex'>
 						<ConfigProvider
 							theme={{
 								token: {
@@ -179,9 +212,10 @@ const Header = () => {
 									title={
 										<div className='flex items-center gap-2'>
 											<span>Sảnh tiệc</span>
-											<ArrowDown color='#434146' />
+											<ArrowDown color={selectedKeys[0] === 'SubMenu' ? '#c75d15' : '#434146'} />
 										</div>
 									}
+									popupClassName='!z-[9999999999]'
 								>
 									<Menu.Item key='dragon-boat'>
 										<Link to={'/banquetHall/dragon-boat'}>Thuyền rồng Kim Long - Hoàng Long</Link>

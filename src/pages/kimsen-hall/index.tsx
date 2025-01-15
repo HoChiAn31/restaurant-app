@@ -1,19 +1,27 @@
+import Slider from 'react-slick';
 import { Clock } from '../../components/icon';
 
 const KimSenHallPage = () => {
+	const settings = {
+		dots: false,
+		infinite: true,
+		speed: 500,
+		slidesToShow: 2,
+		slidesToScroll: 1,
+	};
 	return (
-		<div className='pb-20'>
+		<div className='pb-20 pt-16 md:pt-0'>
 			<div className='relative'>
 				<img src='https://i.imgur.com/8as1nBQ.jpeg' alt='' className='w-full' />
 				<div className='absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform'>
-					<div className='text-center'>
-						<span className="font-['MTD Valky Bold'] text-[40px] font-bold uppercase leading-[48px] text-white">
+					<div className='w-[400px] text-center lg:w-full'>
+						<p className="font-['MTD Valky Bold'] text-base font-bold uppercase leading-tight text-white lg:text-[40px] lg:leading-[48px]">
 							sảnh
 							<br />
-						</span>
-						<span className="font-['MTD Valky Bold'] text-[64px] font-bold uppercase leading-[76.80px] text-white">
+						</p>
+						<p className="font-['MTD Valky Bold'] text-[26px] font-bold uppercase leading-loose text-white lg:text-[64px] lg:leading-[76.80px]">
 							hoàng sen - kim sen
-						</span>
+						</p>
 					</div>
 				</div>
 			</div>
@@ -25,7 +33,7 @@ const KimSenHallPage = () => {
 						className=''
 					/>
 				</div>
-				<div className="h-[60px] font-['Manrope'] text-xl font-semibold leading-[30px] text-[#3f3f41]">
+				<div className="font-['Manrope'] text-xl font-semibold leading-[30px] text-[#3f3f41]">
 					Là sảnh kết hợp của 2 sảnh nhỏ là Hoàng Sen và Kim Sen. Với sảnh Kim Sen có thể tổ chức 28
 					bàn (trên dưới 250 khách). Còn với sảnh Hoàng Sen có thể đáp ứng 50 bàn (trên dưới 500
 					người).
@@ -65,22 +73,22 @@ const KimSenHallPage = () => {
 					</div>
 				</div>
 
-				<div className='flex gap-4'>
+				<div className='flex flex-col gap-4 pt-2 lg:flex-row'>
 					<img
 						src='https://i1.wp.com/wp.thuytadamsen.vn/wp-content/uploads/2019/03/DSC00700.jpg?strip=info&w=748'
 						alt=''
-						className='h-auto w-2/3 object-cover'
+						className='h-auto w-full lg:w-2/3'
 					/>
-					<div className='flex w-1/2 flex-col gap-4'>
+					<div className='grid grid-cols-2 gap-4 lg:flex lg:flex-col lg:gap-6'>
 						<img
 							src='https://i1.wp.com/wp.thuytadamsen.vn/wp-content/uploads/2019/03/DSC00724.jpg?strip=info&w=748'
 							alt=''
-							className='h-auto w-full object-cover'
+							className='h-auto object-cover'
 						/>
 						<img
 							src='https://i0.wp.com/wp.thuytadamsen.vn/wp-content/uploads/2019/03/DSC00771.jpg?strip=info&w=748'
 							alt=''
-							className='h-auto w-full object-cover'
+							className='h-auto object-cover'
 						/>
 					</div>
 				</div>
@@ -94,22 +102,22 @@ const KimSenHallPage = () => {
 						Sảnh Hoàng Sen
 					</div>
 				</div>
-				<div className='flex gap-4 pt-2'>
+				<div className='flex flex-col gap-4 pt-2 lg:flex-row'>
 					<img
 						src='https://i1.wp.com/wp.thuytadamsen.vn/wp-content/uploads/2019/03/DSC00706.jpg?strip=info&w=748'
 						alt=''
-						className='h-auto w-2/3 object-cover'
+						className='h-auto w-full lg:w-2/3'
 					/>
-					<div className='flex w-1/2 flex-col gap-4'>
+					<div className='grid grid-cols-2 gap-4 lg:flex lg:flex-col lg:gap-6'>
 						<img
 							src='https://i1.wp.com/wp.thuytadamsen.vn/wp-content/uploads/2019/03/DSC00707.jpg?strip=info&w=748'
 							alt=''
-							className='h-auto w-full object-cover'
+							className='h-auto object-cover'
 						/>
 						<img
 							src='https://i2.wp.com/wp.thuytadamsen.vn/wp-content/uploads/2019/03/DSC00714.jpg?strip=info&w=748'
 							alt=''
-							className='h-auto w-full object-cover'
+							className='h-auto object-cover'
 						/>
 					</div>
 				</div>
@@ -128,7 +136,8 @@ const KimSenHallPage = () => {
 					<div className="font-['Manrope'] text-[32px] font-bold text-[#ed7d31]">
 						Các sảnh tiệc khác
 					</div>
-					<div className='grid grid-cols-3 gap-2'>
+					{/* desktop */}
+					<div className='hidden grid-cols-3 gap-2 lg:grid'>
 						<div className='space-y-1'>
 							<img src='https://i.imgur.com/5NeJIqH.png' alt='' />
 							<div className='flex items-center justify-between'>
@@ -171,6 +180,53 @@ const KimSenHallPage = () => {
 								</div>
 							</div>
 						</div>
+					</div>
+					{/* mobile */}
+					<div className='lg:hidden'>
+						<Slider {...settings}>
+							<div className='space-y-1 px-1'>
+								<img src='https://i.imgur.com/5NeJIqH.png' alt='' />
+								<div className='flex items-center justify-between'>
+									<div className="w-[311px] font-['Manrope'] text-base font-bold leading-[22.86px] text-[#c75d15]">
+										Thuyền rồng Kim Long - Hoàng Long
+									</div>
+									<div className='flex items-center gap-1'>
+										<Clock />
+										<div className="text-right font-['Manrope'] text-base font-normal leading-normal text-[#666666]">
+											11/02/2020
+										</div>
+									</div>
+								</div>
+							</div>
+							<div className='space-y-1 px-1'>
+								<img src='https://i.imgur.com/5NeJIqH.png' alt='' />
+								<div className='flex items-center justify-between'>
+									<div className="w-[311px] font-['Manrope'] text-base font-bold leading-[22.86px] text-[#c75d15]">
+										Sảnh Ngân Sen
+									</div>
+									<div className='flex items-center gap-1'>
+										<Clock />
+										<div className="text-right font-['Manrope'] text-base font-normal leading-normal text-[#666666]">
+											11/02/2020
+										</div>
+									</div>
+								</div>
+							</div>
+							<div className='space-y-1 px-1'>
+								<img src='https://i.imgur.com/5NeJIqH.png' alt='' />
+								<div className='flex items-center justify-between'>
+									<div className="w-[311px] font-['Manrope'] text-base font-bold leading-[22.86px] text-[#c75d15]">
+										Sảnh Thanh Sen
+									</div>
+									<div className='flex items-center gap-1'>
+										<Clock />
+										<div className="text-right font-['Manrope'] text-base font-normal leading-normal text-[#666666]">
+											11/02/2020
+										</div>
+									</div>
+								</div>
+							</div>
+						</Slider>
 					</div>
 				</div>
 			</div>

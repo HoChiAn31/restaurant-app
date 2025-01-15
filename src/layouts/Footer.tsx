@@ -14,7 +14,7 @@ const Footer: FC = () => {
 			className='h-auto lg:h-[344px]'
 		>
 			<div className='relative flex flex-col items-center justify-center py-4 lg:flex-row'>
-				<div className='mt-2 flex w-full flex-wrap gap-24 px-4 lg:mr-[10%] lg:w-auto lg:flex-nowrap lg:px-0 2xl:mr-[10%]'>
+				<div className='mt-2 flex w-full flex-wrap gap-2 px-4 lg:mr-[10%] lg:w-auto lg:flex-nowrap lg:gap-24 lg:px-0 2xl:mr-[10%]'>
 					{/* Logo */}
 					<div className='flex w-full justify-center lg:w-auto lg:justify-start'>
 						<img
