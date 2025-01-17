@@ -14,11 +14,6 @@ const Header = () => {
 	const [isScrolled, setIsScrolled] = useState(false); // Track scrolling
 	const menuRef = useRef<HTMLDivElement | null>(null);
 
-	const [activeSubMenu, setActiveSubMenu] = useState(null);
-
-	const handleSubMenuClick = (key: any) => {
-		setActiveSubMenu(key);
-	};
 	// Xác định key đang active dựa vào pathname
 	const selectedKeys = (() => {
 		if (name.includes('/menu')) return ['menu'];

@@ -107,8 +107,14 @@ const ThanhSenHallPage = () => {
 				</div>
 
 				<div className='relative flex flex-col gap-4 lg:grid lg:grid-cols-2'>
-					<img src='https://i1.wp.com/wp.thuytadamsen.vn/wp-content/uploads/2019/03/DSC_0090-1024x681.jpg?strip=info&w=1280' />
-					<img src='https://i2.wp.com/wp.thuytadamsen.vn/wp-content/uploads/2019/03/DSC_0073-1024x682.jpg?strip=info&w=1280' />
+					<img
+						src='https://i1.wp.com/wp.thuytadamsen.vn/wp-content/uploads/2019/03/DSC_0090-1024x681.jpg?strip=info&w=1280'
+						alt=''
+					/>
+					<img
+						src='https://i2.wp.com/wp.thuytadamsen.vn/wp-content/uploads/2019/03/DSC_0073-1024x682.jpg?strip=info&w=1280'
+						alt=''
+					/>
 				</div>
 				<div className='flex flex-col items-start justify-start gap-2'>
 					<div className="font-['MTD Valky Bold'] text-[32px] font-bold uppercase text-[#c75d15]">

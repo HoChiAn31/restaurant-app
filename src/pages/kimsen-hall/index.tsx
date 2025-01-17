@@ -12,7 +12,7 @@ const KimSenHallPage = () => {
 	return (
 		<div className='pb-20 pt-16 md:pt-0'>
 			<div className='relative'>
-				<img src='https://i.imgur.com/8as1nBQ.jpeg' alt='' className='w-full' />
+				<img src='https://i.imgur.com/8as1nBQ.jpeg' alt='bg' className='w-full' />
 				<div className='absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform'>
 					<div className='w-[400px] text-center lg:w-full'>
 						<p className="font-['MTD Valky Bold'] text-base font-bold uppercase leading-tight text-white lg:text-[40px] lg:leading-[48px]">
@@ -43,10 +43,12 @@ const KimSenHallPage = () => {
 					<img
 						// className='absolute left-0 top-0 h-[486px] w-[647.47px]'
 						src='https://i0.wp.com/wp.thuytadamsen.vn/wp-content/uploads/2019/03/S%E1%BA%A3nh-ho%C3%A0ng-sen.jpg?strip=info&w=960'
+						alt=''
 					/>
 					<img
 						// className='absolute left-[671.53px] top-0 h-[486px] w-[648.47px]'
 						src='https://i1.wp.com/wp.thuytadamsen.vn/wp-content/uploads/2019/03/sanh-kim-sen.jpg?strip=info&w=960'
+						alt=''
 					/>
 				</div>
 
