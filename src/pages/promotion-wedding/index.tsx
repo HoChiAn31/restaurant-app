@@ -132,14 +132,14 @@ const columns: TableColumnsType<DataSourceItemType> = [
 ];
 const PromotionWeddingPage = () => {
 	return (
-		<div>
+		<div className='pb-20 pt-16 md:pt-0'>
 			<div className='relative'>
 				<img
 					src='https://firebasestorage.googleapis.com/v0/b/adept-now-409715.appspot.com/o/restaurants%2FBG-header.png?alt=media&token=07d9ef21-b7b6-4deb-b95c-9eb5bfd3f1ec'
 					alt=''
 				/>
 				<div className='absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform'>
-					<p className="font-['MTD Valky Bold'] text-center text-[64px] font-bold uppercase text-white">
+					<p className="font-['MTD Valky Bold'] text-center text-lg font-bold uppercase text-white lg:text-[64px]">
 						Khuyến Mãi Tiệc Cưới
 					</p>
 				</div>
@@ -153,7 +153,7 @@ const PromotionWeddingPage = () => {
 					/>
 				</div>
 			</div>
-			<div className='mx-auto my-5 max-w-[865px] space-y-5'>
+			<div className='mx-auto my-5 max-w-[865px] space-y-5 px-5'>
 				<ConfigProvider
 					theme={{
 						token: {
@@ -169,9 +169,11 @@ const PromotionWeddingPage = () => {
 						},
 					}}
 				>
-					<Table dataSource={dataSource} columns={columns} pagination={false} bordered />
+					<div className='overflow-x-auto'>
+						<Table dataSource={dataSource} columns={columns} pagination={false} bordered />
+					</div>
 				</ConfigProvider>
-				<div className="pl-5 font-['Manrope'] text-base font-normal text-[#666666] 2xl:w-[1320px]">
+				<div className="pl-5 font-['Manrope'] text-base font-normal text-[#666666]">
 					<ul className='list-disc'>
 						<li>
 							Quý khách vào dự tiệc tại nhà Thuỷ Tạ Đầm Sen được tham quan Công Viên Đầm Sen Miễn

@@ -24,21 +24,21 @@ const Footer: FC = () => {
 						/>
 					</div>
 					{/* Contact */}
-					<div className='mt-4 w-full lg:mt-0 lg:w-1/3'>
-						<div className="font-['MTD Valky Bold'] text-[32px] font-bold leading-[38.40px] text-white">
+					<div className='w-full space-y-2 lg:mt-0 lg:w-1/3'>
+						<div className="font-['MTD Valky Bold'] text-2xl font-bold leading-[28.80px] text-white lg:text-[32px] lg:leading-[38.40px]">
 							Liên hệ
 						</div>
-						<div className='mt-8 flex items-start gap-1'>
+						<div className='flex items-start gap-1'>
 							<Location />
-							<div className="font-['Manrope'] text-lg font-normal text-white">
+							<div className="font-['Manrope'] text-sm font-normal text-white lg:text-lg">
 								03 Hòa Bình, Phường 3, Quận 11, TP. Hồ Chí Minh
 								<br />
 								(Cổng số 2 Công viên Văn hóa Đầm Sen)
 							</div>
 						</div>
-						<div className='flex items-start gap-1'>
+						<div className='flex items-center gap-1'>
 							<Call />
-							<div className="font-['Manrope'] text-lg font-normal text-white">
+							<div className="font-['Manrope'] text-sm font-normal text-white lg:text-lg">
 								028 3961 2082 – 028 3858 6763
 							</div>
 						</div>
@@ -46,41 +46,41 @@ const Footer: FC = () => {
 					{/* Branches */}
 					<div className='mt-4 inline-flex w-full flex-col items-start justify-start gap-3 lg:mt-0 lg:w-1/3'>
 						<div>
-							<p className="font-['MTD Valky Bold'] text-[32px] font-bold leading-[38.40px] text-white">
+							<p className="font-['MTD Valky Bold'] text-2xl font-bold leading-[28.80px] text-white lg:text-[32px] lg:leading-[38.40px]">
 								Các đơn vị cùng hệ thống
 							</p>
-							<p className="font-['MTD Valky Bold'] text-[32px] font-bold leading-[38.40px] text-white">
+							<p className="font-['MTD Valky Bold'] text-2xl font-bold leading-[28.80px] text-white lg:text-[32px] lg:leading-[38.40px]">
 								Phuthotourist
 							</p>
 						</div>
 						<ul className='flex flex-col items-start justify-start gap-0.5'>
 							<li className='flex items-center gap-2'>
 								<div className='h-2 w-2 rounded-full bg-white' />
-								<span className="font-['Manrope'] text-lg font-normal leading-[27px] text-white">
+								<span className="font-['Manrope'] text-sm font-normal leading-[27px] text-white lg:text-lg">
 									Công ty CP DVDL Phú Thọ
 								</span>
 							</li>
 							<li className='flex items-center gap-2'>
 								<div className='h-2 w-2 rounded-full bg-white' />
-								<span className="font-['Manrope'] text-lg font-normal leading-[27px] text-white">
+								<span className="font-['Manrope'] text-sm font-normal leading-[27px] text-white lg:text-lg">
 									Khu du lịch sinh thái Vàm Sát
 								</span>
 							</li>
 							<li className='flex items-center gap-2'>
 								<div className='h-2 w-2 rounded-full bg-white' />
-								<span className="font-['Manrope'] text-lg font-normal leading-[27px] text-white">
+								<span className="font-['Manrope'] text-sm font-normal leading-[27px] text-white lg:text-lg">
 									Khách sạn Ngọc Lan
 								</span>
 							</li>
 							<li className='flex items-center gap-2'>
 								<div className='h-2 w-2 rounded-full bg-white' />
-								<span className="font-['Manrope'] text-lg font-normal leading-[27px] text-white">
+								<span className="font-['Manrope'] text-sm font-normal leading-[27px] text-white lg:text-lg">
 									Khách sạn Phú Thọ
 								</span>
 							</li>
 							<li className='flex items-center gap-2'>
 								<div className='h-2 w-2 rounded-full bg-white' />
-								<span className="font-['Manrope'] text-lg font-normal leading-[27px] text-white">
+								<span className="font-['Manrope'] text-sm font-normal leading-[27px] text-white lg:text-lg">
 									Trung tâm Du lịch Đầm Sen
 								</span>
 							</li>
@@ -89,7 +89,7 @@ const Footer: FC = () => {
 
 					{/*  */}
 					<div className='bottom-6 left-[18%] px-4 pt-5 text-left lg:hidden'>
-						<div className="font-['Manrope'] text-sm font-normal text-white">
+						<div className="w-[60%] font-['Manrope'] text-xs font-normal text-white">
 							Copyright © Công ty Cổ phần Dịch vụ Du lịch Phú Thọ (Phuthotourist)
 						</div>
 					</div>
@@ -98,6 +98,9 @@ const Footer: FC = () => {
 					<div className="font-['Manrope'] text-sm font-normal text-white">
 						Copyright © Công ty Cổ phần Dịch vụ Du lịch Phú Thọ (Phuthotourist)
 					</div>
+				</div>
+				<div className='absolute bottom-0 right-0 lg:hidden'>
+					<img src='https://i.imgur.com/JHU8WgH.png' alt='' className='' />
 				</div>
 			</div>
 		</div>

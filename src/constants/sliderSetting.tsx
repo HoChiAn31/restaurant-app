@@ -39,15 +39,3 @@ export const settingHomes = {
 		},
 	],
 };
-
-export const settingMenu = {
-	dots: false,
-	infinite: true,
-	speed: 500,
-	slidesToShow: 4,
-	slidesToScroll: 1,
-	// autoplay: true,
-	autoplaySpeed: 1000,
-	nextArrow: <SampleNextArrow typeCus='menu' />,
-	prevArrow: <SamplePrevArrow typeCus='menu' />,
-};

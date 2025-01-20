@@ -73,9 +73,9 @@ const Header = () => {
 			<div className='relative mx-auto flex w-full max-w-[1400px] items-center justify-between bg-white px-4 py-2 md:bg-transparent 2xl:max-w-[1680px]'>
 				{/* Mobile Layout */}
 				{isMobile && (
-					<div className='flex w-full items-center md:hidden'>
+					<div className='relative flex w-full items-center md:hidden'>
 						<button
-							className='text-2xl text-[#434146]'
+							className='absolute text-2xl text-[#434146]'
 							onClick={() => setIsToggleMenu(!isToggleMenu)}
 						>
 							<MenuOutlined />
@@ -139,13 +139,19 @@ const Header = () => {
 								className='border-transparent bg-transparent'
 							>
 								<Menu.Item key='menu'>
-									<Link to={'/menu'}>Thực đơn</Link>
+									<Link onClick={() => setIsToggleMenu(false)} to={'/menu'}>
+										Thực đơn
+									</Link>
 								</Menu.Item>
 								<Menu.Item key='conference-room'>
-									<Link to={'/conference-room'}>Phòng hội nghị</Link>
+									<Link onClick={() => setIsToggleMenu(false)} to={'/conference-room'}>
+										Phòng hội nghị
+									</Link>
 								</Menu.Item>
 								<Menu.Item key='promotion-wedding'>
-									<Link to={'/promotion-wedding'}>Khuyến mãi tiệc cưới</Link>
+									<Link onClick={() => setIsToggleMenu(false)} to={'/promotion-wedding'}>
+										Khuyến mãi tiệc cưới
+									</Link>
 								</Menu.Item>
 								<Menu.SubMenu
 									key='SubMenu'
@@ -156,16 +162,24 @@ const Header = () => {
 									}
 								>
 									<Menu.Item key='dragon-boat'>
-										<Link to={'/banquetHall/dragon-boat'}>Thuyền rồng Kim Long - Hoàng Long</Link>
+										<Link onClick={() => setIsToggleMenu(false)} to={'/banquetHall/dragon-boat'}>
+											Thuyền rồng Kim Long - Hoàng Long
+										</Link>
 									</Menu.Item>
 									<Menu.Item key='ngansen-hall'>
-										<Link to={'/banquetHall/ngansen-hall'}>Sảnh Ngân Sen</Link>
+										<Link onClick={() => setIsToggleMenu(false)} to={'/banquetHall/ngansen-hall'}>
+											Sảnh Ngân Sen
+										</Link>
 									</Menu.Item>
 									<Menu.Item key='kimsen-hall'>
-										<Link to={'/banquetHall/kimsen-hall'}>Sảnh Hoàng Sen - Kim Sen</Link>
+										<Link onClick={() => setIsToggleMenu(false)} to={'/banquetHall/kimsen-hall'}>
+											Sảnh Hoàng Sen - Kim Sen
+										</Link>
 									</Menu.Item>
 									<Menu.Item key='thanhsen-hall'>
-										<Link to={'/banquetHall/thanhsen-hall'}>Sảnh Thanh Sen</Link>
+										<Link onClick={() => setIsToggleMenu(false)} to={'/banquetHall/thanhsen-hall'}>
+											Sảnh Thanh Sen
+										</Link>
 									</Menu.Item>
 								</Menu.SubMenu>
 							</Menu>

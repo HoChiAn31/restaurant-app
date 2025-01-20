@@ -12,11 +12,7 @@ const NganSenHallPage = () => {
 	return (
 		<div className='pb-20 pt-16 md:pt-0'>
 			<div className='relative'>
-				<img
-					src='http://wp.thuytadamsen.vn/wp-content/themes/restaurantz/images/header-banner.jpg'
-					alt=''
-					className='w-full'
-				/>
+				<img src='https://i.imgur.com/K8dZNMS.png' alt='' className='w-full' />
 				<div className='absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform'>
 					<div className='w-[400px] text-center lg:w-full'>
 						<p className="font-['MTD Valky Bold'] text-base font-bold uppercase leading-tight text-white lg:text-[40px] lg:leading-[48px]">

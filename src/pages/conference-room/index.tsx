@@ -145,13 +145,11 @@ const columns: TableColumnsType<DataSourceItemType> = [
 				title: 'Xếp theo kiểu bàn tròn (10 khách/bàn)',
 				dataIndex: 'roomCapacity',
 				key: 'roomCapacity_round',
-				responsive: ['lg'],
 			},
 			{
 				title: 'Xếp theo kiểu bàn tròn (10 khách/bàn)',
 				dataIndex: 'roomCapacity',
 				key: 'roomCapacity_round',
-				responsive: ['lg'],
 			},
 		],
 	},
@@ -235,14 +233,14 @@ const columns: TableColumnsType<DataSourceItemType> = [
 
 const conferenceRoomPage = () => {
 	return (
-		<div className=''>
+		<div className='pb-20 pt-16 md:pt-0'>
 			<div className='relative'>
 				<img
 					src='https://firebasestorage.googleapis.com/v0/b/adept-now-409715.appspot.com/o/restaurants%2FBG-header.png?alt=media&token=07d9ef21-b7b6-4deb-b95c-9eb5bfd3f1ec'
 					alt=''
 				/>
 				<div className='absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform'>
-					<p className="font-['MTD Valky Bold'] text-center text-[64px] font-bold uppercase text-white">
+					<p className="font-['MTD Valky Bold'] text-center text-lg font-bold uppercase text-white lg:text-[64px]">
 						Phòng Hội Nghị
 					</p>
 				</div>
@@ -266,7 +264,7 @@ const conferenceRoomPage = () => {
 				{/*  */}
 
 				<div className='mx-auto my-5 max-w-[865px]'>
-					<ConfigProvider
+					{/* <ConfigProvider
 						theme={{
 							token: {
 								colorPrimaryHover: '#ed7d31',
@@ -314,6 +312,67 @@ const conferenceRoomPage = () => {
 								},
 							}}
 						/>
+					</ConfigProvider> */}
+					<ConfigProvider
+						theme={{
+							token: {
+								colorPrimaryHover: '#ed7d31',
+							},
+							components: {
+								Table: {
+									headerColor: '#c75d15',
+									headerBg: '#ffeed7',
+									borderColor: '#C2C2C2',
+									headerBorderRadius: 0,
+								},
+							},
+						}}
+					>
+						<div className='overflow-x-auto'>
+							<Table
+								dataSource={dataSource}
+								columns={columns}
+								pagination={false}
+								bordered
+								// scroll={{ x: 'max-content' }}
+							/>
+						</div>
+					</ConfigProvider>
+
+					<ConfigProvider
+						theme={{
+							token: {
+								colorPrimaryHover: '#ed7d31',
+							},
+							components: {
+								Table: {
+									headerColor: '#c75d15',
+									headerBg: '#ffffff',
+									borderColor: '#C2C2C2',
+									headerBorderRadius: 0,
+								},
+							},
+						}}
+					>
+						<div className='overflow-x-auto'>
+							<Table
+								dataSource={[]}
+								columns={columnPromotions}
+								pagination={false}
+								bordered
+								showHeader={true}
+								locale={{
+									emptyText: null,
+								}}
+								className='rounded-none'
+								scroll={{ x: 'max-content' }} // Thêm thuộc tính cuộn ngang
+								components={{
+									body: {
+										wrapper: (props: any) => <tbody style={{ display: 'none' }} {...props} />,
+									},
+								}}
+							/>
+						</div>
 					</ConfigProvider>
 				</div>
 			</div>
