@@ -25,7 +25,7 @@ const Footer: FC = () => {
 					</div>
 					{/* Contact */}
 					<div className='w-full space-y-2 lg:mt-0 lg:w-1/3'>
-						<div className="font-['MTD Valky Bold'] text-2xl font-bold leading-[28.80px] text-white lg:text-[32px] lg:leading-[38.40px]">
+						<div className='font-mtdValky text-2xl font-bold leading-[28.80px] text-white lg:text-[32px] lg:leading-[38.40px]'>
 							Liên hệ
 						</div>
 						<div className='flex items-start gap-1'>
@@ -46,41 +46,38 @@ const Footer: FC = () => {
 					{/* Branches */}
 					<div className='mt-4 inline-flex w-full flex-col items-start justify-start gap-3 lg:mt-0 lg:w-1/3'>
 						<div>
-							<p className="font-['MTD Valky Bold'] text-2xl font-bold leading-[28.80px] text-white lg:text-[32px] lg:leading-[38.40px]">
-								Các đơn vị cùng hệ thống
-							</p>
-							<p className="font-['MTD Valky Bold'] text-2xl font-bold leading-[28.80px] text-white lg:text-[32px] lg:leading-[38.40px]">
-								Phuthotourist
+							<p className='font-mtdValky text-2xl font-bold leading-[28.80px] text-white lg:text-[32px] lg:leading-[38.40px]'>
+								Các đơn vị cùng hệ thống Phuthotourist
 							</p>
 						</div>
 						<ul className='flex flex-col items-start justify-start gap-0.5'>
 							<li className='flex items-center gap-2'>
 								<div className='h-2 w-2 rounded-full bg-white' />
-								<span className="font-['Manrope'] text-sm font-normal leading-[27px] text-white lg:text-lg">
+								<span className="font-['Manrope'] text-sm leading-[27px] text-white lg:text-lg">
 									Công ty CP DVDL Phú Thọ
 								</span>
 							</li>
 							<li className='flex items-center gap-2'>
 								<div className='h-2 w-2 rounded-full bg-white' />
-								<span className="font-['Manrope'] text-sm font-normal leading-[27px] text-white lg:text-lg">
+								<span className="font-['Manrope'] text-sm leading-[27px] text-white lg:text-lg">
 									Khu du lịch sinh thái Vàm Sát
 								</span>
 							</li>
 							<li className='flex items-center gap-2'>
 								<div className='h-2 w-2 rounded-full bg-white' />
-								<span className="font-['Manrope'] text-sm font-normal leading-[27px] text-white lg:text-lg">
+								<span className="font-['Manrope'] text-sm leading-[27px] text-white lg:text-lg">
 									Khách sạn Ngọc Lan
 								</span>
 							</li>
 							<li className='flex items-center gap-2'>
 								<div className='h-2 w-2 rounded-full bg-white' />
-								<span className="font-['Manrope'] text-sm font-normal leading-[27px] text-white lg:text-lg">
+								<span className="font-['Manrope'] text-sm leading-[27px] text-white lg:text-lg">
 									Khách sạn Phú Thọ
 								</span>
 							</li>
 							<li className='flex items-center gap-2'>
 								<div className='h-2 w-2 rounded-full bg-white' />
-								<span className="font-['Manrope'] text-sm font-normal leading-[27px] text-white lg:text-lg">
+								<span className="font-['Manrope'] text-sm leading-[27px] text-white lg:text-lg">
 									Trung tâm Du lịch Đầm Sen
 								</span>
 							</li>

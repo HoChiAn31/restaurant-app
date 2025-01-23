@@ -15,11 +15,11 @@ const ThanhSenHallPage = () => {
 				<img src='https://i.imgur.com/K8dZNMS.png' alt='' className='w-full' />
 				<div className='absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform'>
 					<div className='w-[400px] text-center lg:w-full'>
-						<p className="font-['MTD Valky Bold'] text-base font-bold uppercase leading-tight text-white lg:text-[40px] lg:leading-[48px]">
+						<p className='font-mtdValky text-base font-bold uppercase leading-tight text-white lg:text-[40px] lg:leading-[48px]'>
 							sảnh
 							<br />
 						</p>
-						<p className="font-['MTD Valky Bold'] text-[26px] font-bold uppercase leading-loose text-white lg:text-[64px] lg:leading-[76.80px]">
+						<p className='font-mtdValky text-[26px] font-bold uppercase leading-loose text-white lg:text-[64px] lg:leading-[76.80px]'>
 							thanh sen
 						</p>
 					</div>
@@ -75,7 +75,7 @@ const ThanhSenHallPage = () => {
 				</div>
 
 				<div className='inline-flex flex-col items-start justify-start gap-2'>
-					<div className="font-['MTD Valky Bold'] text-[32px] font-bold uppercase text-[#c75d15]">
+					<div className='font-mtdValky text-[32px] font-bold uppercase text-[#c75d15]'>
 						Rước dâu bằng thuyền hoa
 					</div>
 					<div className="font-['Manrope'] text-base font-normal leading-normal text-[#3f3f41]">
@@ -117,7 +117,7 @@ const ThanhSenHallPage = () => {
 					/>
 				</div>
 				<div className='flex flex-col items-start justify-start gap-2'>
-					<div className="font-['MTD Valky Bold'] text-[32px] font-bold uppercase text-[#c75d15]">
+					<div className='font-mtdValky text-[32px] font-bold uppercase text-[#c75d15]'>
 						sân khâu rèm nước
 					</div>
 					<div className="font-['Manrope'] text-base font-normal leading-normal text-[#3f3f41]">

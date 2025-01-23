@@ -7,7 +7,7 @@ export default {
 				primary: '#c75d15',
 			},
 			fontFamily: {
-				valky: ['"MTD Valky Bold"', 'sans-serif'],
+				mtdValky: ['MTDValky', 'sans-serif'],
 			},
 		},
 	},

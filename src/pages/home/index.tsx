@@ -1,14 +1,52 @@
 import Slider from 'react-slick';
 import { settingHomes } from '../../constants/sliderSetting';
 import { Button } from 'antd';
-import { dataImage } from '../../mocks/dataMenu';
 import { useNavigate } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { fetchImages } from '../../firebase/fetchImage';
+import { ImageProps } from '../../types/image';
 
 const HomePage = () => {
 	const nav = useNavigate();
 	const handleSwitchMenu = () => {
 		nav('/menu');
 	};
+	const [dataImage, setDataImage] = useState<ImageProps[]>([]);
+	const [isLoading, setIsLoading] = useState<boolean>(false);
+	useEffect(() => {
+		const getCategories = async () => {
+			try {
+				const data = await fetchImages();
+				console.log('Data fetched successfully', data);
+				setDataImage(data as ImageProps[]);
+			} catch (error) {
+				console.error(error);
+			} finally {
+				setIsLoading(true);
+			}
+		};
+
+		getCategories();
+	}, []);
+	if (!isLoading) {
+		return (
+			<div
+				className='flex h-[100vh] items-center justify-center lg:h-screen'
+				style={{
+					backgroundImage: `url('https://demo.wenthemes.com/restaurantz-pro/wp-content/uploads/sites/13/2016/02/abendbrot-939435_1920.jpg')`,
+					backgroundSize: 'cover',
+					backgroundPosition: 'center',
+
+					display: 'flex',
+					justifyContent: 'center',
+				}}
+			>
+				<Button className='py-5 text-primary' onClick={handleSwitchMenu}>
+					Tìm hiểu thêm
+				</Button>
+			</div>
+		);
+	}
 	return (
 		<div>
 			<Slider {...settingHomes} className='slick-home'>
@@ -46,10 +84,10 @@ const HomePage = () => {
 									</div>
 									<div className='w-full'>
 										<div className='flex flex-col text-center lg:gap-8'>
-											<p className="font-['MTD Valky Bold'] text-lg font-bold uppercase text-white lg:text-[40px]">
+											<p className='font-mtdValky text-lg font-bold uppercase text-white lg:text-[40px]'>
 												Chào mừng đến với
 											</p>
-											<p className="font-['MTD Valky Bold'] text-lg font-bold uppercase text-white lg:text-[64px]">
+											<p className='font-mtdValky text-lg font-bold uppercase text-white lg:text-[64px]'>
 												nhà hàng Thủy Tạ Đầm Sen
 											</p>
 										</div>

@@ -19,11 +19,11 @@ const DragonBoatPage = () => {
 				/>
 				<div className='absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform'>
 					<div className='w-[400px] text-center lg:w-full'>
-						<p className="font-['MTD Valky Bold'] text-base font-bold uppercase leading-tight text-white lg:text-[40px] lg:leading-[48px]">
+						<p className='font-mtdValky text-base font-bold uppercase leading-tight text-white lg:text-[40px] lg:leading-[48px]'>
 							thuyền rồng
 							<br />
 						</p>
-						<p className="font-['MTD Valky Bold'] text-[26px] font-bold uppercase leading-loose text-white lg:text-[64px] lg:leading-[76.80px]">
+						<p className='font-mtdValky text-[26px] font-bold uppercase leading-loose text-white lg:text-[64px] lg:leading-[76.80px]'>
 							kim long - hoàng long
 						</p>
 					</div>

@@ -240,7 +240,7 @@ const conferenceRoomPage = () => {
 					alt=''
 				/>
 				<div className='absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform'>
-					<p className="font-['MTD Valky Bold'] text-center text-lg font-bold uppercase text-white lg:text-[64px]">
+					<p className='font-mtdValky text-center text-lg font-bold uppercase text-white lg:text-[64px]'>
 						Phòng Hội Nghị
 					</p>
 				</div>
@@ -264,55 +264,6 @@ const conferenceRoomPage = () => {
 				{/*  */}
 
 				<div className='mx-auto my-5 max-w-[865px]'>
-					{/* <ConfigProvider
-						theme={{
-							token: {
-								colorPrimaryHover: '#ed7d31',
-							},
-							components: {
-								Table: {
-									headerColor: '#c75d15',
-									headerBg: '#ffeed7',
-									borderColor: '#C2C2C2',
-									headerBorderRadius: 0,
-								},
-							},
-						}}
-					>
-						<Table dataSource={dataSource} columns={columns} pagination={false} bordered />
-					</ConfigProvider>
-					<ConfigProvider
-						theme={{
-							token: {
-								colorPrimaryHover: '#ed7d31',
-							},
-							components: {
-								Table: {
-									headerColor: '#c75d15',
-									headerBg: '#ffffff',
-									borderColor: '#C2C2C2',
-									headerBorderRadius: 0,
-								},
-							},
-						}}
-					>
-						<Table
-							dataSource={[]}
-							columns={columnPromotions}
-							pagination={false}
-							bordered
-							showHeader={true}
-							locale={{
-								emptyText: null,
-							}}
-							className='rounded-none'
-							components={{
-								body: {
-									wrapper: (props: any) => <tbody style={{ display: 'none' }} {...props} />,
-								},
-							}}
-						/>
-					</ConfigProvider> */}
 					<ConfigProvider
 						theme={{
 							token: {

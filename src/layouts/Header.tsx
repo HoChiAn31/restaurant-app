@@ -9,41 +9,37 @@ const Header = () => {
 	const location = useLocation();
 	const name = location.pathname;
 
-	const [isMobile, setIsMobile] = useState(window.innerWidth < 768); // Initial check for mobile view
+	const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
 	const [isToggleMenu, setIsToggleMenu] = useState(false);
-	const [isScrolled, setIsScrolled] = useState(false); // Track scrolling
+	const [isScrolled, setIsScrolled] = useState(false);
 	const menuRef = useRef<HTMLDivElement | null>(null);
 
-	// Xác định key đang active dựa vào pathname
 	const selectedKeys = (() => {
 		if (name.includes('/menu')) return ['menu'];
 		if (name.includes('/conference-room')) return ['conference-room'];
 		if (name.includes('/promotion-wedding')) return ['promotion-wedding'];
 		if (name.includes('/banquetHall')) {
-			// Active the SubMenu and its child based on the pathname
 			if (name.includes('/dragon-boat')) return ['SubMenu', 'dragon-boat'];
 			if (name.includes('/ngansen-hall')) return ['SubMenu', 'ngansen-hall'];
 			if (name.includes('/kimsen-hall')) return ['SubMenu', 'kimsen-hall'];
 			if (name.includes('/thanhsen-hall')) return ['SubMenu', 'thanhsen-hall'];
-			return ['SubMenu']; // Default to SubMenu if it's a banquetHall page but no specific hall
+			return ['SubMenu'];
 		}
 		return [];
 	})();
 
-	// Use useEffect to update the state when the window is resized
 	useEffect(() => {
 		const handleResize = () => {
 			setIsMobile(window.innerWidth < 768);
 		};
 
 		const handleScroll = () => {
-			setIsScrolled(window.scrollY > 300); // Change header background color on scroll for both mobile and desktop
+			setIsScrolled(window.scrollY > 300);
 		};
 
 		window.addEventListener('resize', handleResize);
 		window.addEventListener('scroll', handleScroll);
 
-		// Cleanup the event listeners on unmount
 		return () => {
 			window.removeEventListener('resize', handleResize);
 			window.removeEventListener('scroll', handleScroll);
@@ -100,12 +96,12 @@ const Header = () => {
 						/>
 						<div className='flex flex-col'>
 							<span
-								className={`${isScrolled ? '!text-[#434146]' : 'text-white'} ${name === '/menu' ? 'text-[#434146]' : 'text-white'} font-['MTD Valky Bold'] text-xl font-semibold leading-[28.80px] 2xl:text-2xl`}
+								className={`${isScrolled ? '!text-[#434146]' : ''} ${name === '/menu' ? 'text-[#434146]' : 'text-[#e5e7eb]'} font-mtdValky text-xl font-semibold leading-[28.80px] 2xl:text-2xl`}
 							>
 								Nhà hàng
 							</span>
 							<span
-								className={`${isScrolled ? '!text-[#434146]' : 'text-white'} ${name === '/menu' ? 'text-[#434146]' : 'text-white'} font-['MTD Valky Bold'] text-3xl font-semibold uppercase text-[#434146] 2xl:text-4xl`}
+								className={`${isScrolled ? '!text-[#434146]' : ''} ${name === '/menu' ? 'text-[#434146]' : 'text-[#e5e7eb]'} font-mtdValky text-3xl font-semibold uppercase 2xl:text-4xl`}
 							>
 								Thủy Tạ Đầm Sen
 							</span>

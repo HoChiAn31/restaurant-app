@@ -1,25 +1,24 @@
 import MenuLayout from '../../layouts/MenuLayout';
 import Slider from 'react-slick';
 import { useEffect, useRef, useState } from 'react';
-import { menuItems } from '../../mocks/dataMenu';
 import { MenuMobile } from '../../components/icon';
 import SampleNextArrow from '../../components/SampleNextArrow';
 import SamplePrevArrow from '../../components/SamplePrevArrow';
-interface MenuItemProps {
+import { fetchRestaurantCategories } from '../../firebase/fetchRestaurantCategories';
+import { fetchMenuItems } from '../../firebase/fetchMenuItems';
+import { MenuItemProps } from '../../types/menuItem';
+
+interface RestaurantCategory {
 	id: string;
-	titleFirst: string;
-	titleLast: string;
 	imageUrl: string;
-	minPrice: number;
-	maxPrice: number;
+	name: string;
 	description: string;
-	category: string[];
-	categoryMenu: string;
 }
 
 const MenuPage = () => {
 	const [activeIndex, setActiveIndex] = useState<string | null>();
 	const [menuData, setMenuData] = useState<MenuItemProps[]>([]);
+	const [menuDataFilter, setMenuDataFilter] = useState<MenuItemProps[]>([]);
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
 	const [activeItem, setActiveItem] = useState<MenuItemProps>();
 	const [isLoading, setIsLoading] = useState(false);
@@ -29,25 +28,50 @@ const MenuPage = () => {
 	const handleItemClick = (index: string) => {
 		setActiveIndex(index);
 	};
+	const [restaurantCategories, setRestaurantCategories] = useState<RestaurantCategory[]>([]);
 
+	useEffect(() => {
+		const getCategories = async () => {
+			try {
+				const data = await fetchRestaurantCategories();
+				// console.log('Data:', data);
+				setRestaurantCategories(data as RestaurantCategory[]);
+			} catch (error) {
+				console.error(error);
+			} finally {
+			}
+		};
+
+		getCategories();
+	}, []);
+	useEffect(() => {
+		const getMenuItems = async () => {
+			try {
+				const data = await fetchMenuItems();
+
+				const filter = data.filter((item) => item.categoryMenu === restaurantCategories[0].id);
+
+				setMenuData(data);
+				setMenuDataFilter(filter);
+
+				if (filter.length > 0) {
+					setActiveItem(filter[0]);
+					setActiveIndex(filter[0].id);
+					setQuantityShow(filter.length);
+				}
+			} catch (error) {
+				console.error(error);
+			} finally {
+				setIsLoading(true);
+			}
+		};
+		if (restaurantCategories.length > 0) {
+			getMenuItems();
+		}
+	}, [restaurantCategories]);
 	const toggleMenu = () => {
 		setIsMenuOpen(!isMenuOpen);
 	};
-	useEffect(() => {
-		const filter = menuItems.filter(
-			(item) => item.categoryMenu === '550e8400-e29b-41d4-a716-446655440000',
-		);
-
-		setMenuData(filter);
-
-		setIsLoading(true);
-
-		if (filter.length > 0) {
-			setActiveItem(filter[0]);
-			setActiveIndex(filter[0].id);
-			setQuantityShow(filter.length);
-		}
-	}, []);
 
 	useEffect(() => {
 		if (activeIndex && menuData) {
@@ -58,21 +82,22 @@ const MenuPage = () => {
 
 	useEffect(() => {
 		if (filterMenu) {
-			const filter = menuItems.filter((item) => item.categoryMenu === filterMenu);
+			const filter = menuData.filter((item) => item.categoryMenu === filterMenu);
+
 			if (filter.length > 0) {
 				setActiveItem(filter[0]);
 				setActiveIndex(filter[0].id);
 
 				setQuantityShow(filter.length);
 			}
-			setMenuData(filter);
+			setMenuDataFilter(filter);
 		}
-	}, [filterMenu]);
+	}, [filterMenu, menuData]);
 
 	useEffect(() => {
 		const handleClickOutside = (event: MouseEvent) => {
 			if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
-				setIsMenuOpen(false); // Ẩn menu
+				setIsMenuOpen(false);
 			}
 		};
 
@@ -82,11 +107,14 @@ const MenuPage = () => {
 		};
 	}, []);
 	const handleFilterMenu = (e: string) => {
-		console.log(e);
 		setFilterMenu(e);
 	};
 	if (!isLoading) {
-		return <p>Loading...</p>;
+		return (
+			<>
+				<p>Loading...</p>
+			</>
+		);
 	}
 	const settingMenu = {
 		dots: false,
@@ -127,14 +155,13 @@ const MenuPage = () => {
 						<button className='absolute right-10 text-5xl text-[#ed7d31]' onClick={toggleMenu}>
 							×
 						</button>
-
-						<MenuLayout setCategory={handleFilterMenu} />
+						<MenuLayout data={restaurantCategories} setCategory={handleFilterMenu} />
 					</div>
 				</div>
 			)}
 
 			<div className='relative z-20 flex flex-col justify-between md:flex-row'>
-				{menuData.length > 0 ? (
+				{isLoading && menuDataFilter.length > 0 ? (
 					<div>
 						<div>
 							{isLoading && activeItem && (
@@ -151,7 +178,7 @@ const MenuPage = () => {
 											{activeItem.titleFirst}
 										</div>
 										<div className='flex items-start justify-start gap-2 border-b-2 border-[#ed7d31] py-2'>
-											<div className='text-5xl font-bold uppercase text-[#ed7d31] md:text-7xl'>
+											<div className='font-mtdValky text-5xl font-bold uppercase text-[#ed7d31] md:text-7xl'>
 												{activeItem.titleLast}
 											</div>
 										</div>
@@ -179,7 +206,7 @@ const MenuPage = () => {
 							<div className='px-5 md:px-20'>
 								<div className='w-full lg:w-[860px] 2xl:w-[1000px]'>
 									<Slider {...settingMenu}>
-										{menuData.map((item, index) => (
+										{menuDataFilter.map((item, index) => (
 											<div
 												key={index}
 												onClick={() => handleItemClick(item.id)}
@@ -216,7 +243,7 @@ const MenuPage = () => {
 
 				{/* Chỉ hiển thị MenuLayout trên màn hình lớn */}
 				<div className='hidden md:block'>
-					<MenuLayout setCategory={handleFilterMenu} />
+					<MenuLayout data={restaurantCategories} setCategory={handleFilterMenu} />
 				</div>
 			</div>
 		</div>

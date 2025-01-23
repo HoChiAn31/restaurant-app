@@ -139,7 +139,7 @@ const PromotionWeddingPage = () => {
 					alt=''
 				/>
 				<div className='absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform'>
-					<p className="font-['MTD Valky Bold'] text-center text-lg font-bold uppercase text-white lg:text-[64px]">
+					<p className='font-mtdValky text-center text-lg font-bold uppercase text-white lg:text-[64px]'>
 						Khuyến Mãi Tiệc Cưới
 					</p>
 				</div>
